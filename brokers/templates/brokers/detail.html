@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    {{ detail.name }} | Brokers
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2" style="background-image:url(https://cdn.pixabay.com/photo/2017/04/20/09/12/businessman-2245116_960_720.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                <span class="mr-2"><a href="{% url 'brokers' %}">Brokers <i class="fa fa-chevron-right"></i></a></span>
+                <span>{{ detail.name }} <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread"> {{ detail.name }} Information </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Foundation</h3>
+            <h6> Slogan:  {{ detail.slogan }}</h6>
+            <h6> Date Founded: {{ detail.date_founded }}</h6>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Process</h3>
+            <h6> Platforms:  {{ detail.platforms }}</h6>
+            <h6>Leverage: {{ detail.leverage }}</h6>
+            <h6>Lot sizes: {{ detail.lot_size }}</h6>
+            <h6> Payment Method: {{ detail.payment_method }}</h6>
+            <h6>Minimum deposit: {{ detail.minimum_deposit }}</h6>
+            <h6> Payout Method: {{ detail.payout_method }}</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+    <div class="tagcloud">
+        <h3>Trade Copy Service</h3>
+
+            <h6> Copier </h6>
+        {% if detail.trade_copier == 'Yes' %}
+            <h6 class="tag-cloud-link text-success">{{ detail.trade_copier }}</h6>
+        {% else %}
+            <a class="tag-cloud-link">{{ detail.copy_trading }}</a> <br >
+        {% endif %}
+
+
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Account Types</h3>
+
+            {% for account in account_type %}
+                <h5>Name: {{ type.plan }}</h5>
+                <p>Minimum Deposit: {{ type.size }}</p>
+                <p>Platforms: {{ type.price }}</p> <br/>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Deposit Method</h3>
+
+                <h5>{{ detail.payment_method }}</h5>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4>Reviews</h4>
+                <p>Support: {{ detail.support }}</p>
+                <p>Customer Satisfaction: {{ detail.customer_satisfaction }}</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+        <div class="row text-center">
+
+    <div class="col col-sm">
+        <h4 class="mb-3">Brief</h4>
+        <p>
+            {{ detail.note | safe }}
+        </p>
+    </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4 class="mb-3">Overall Rating</h4>
+            <p>
+
+               {{ detail.overall_rating }}
+               <a href="{{ detail.trust_pilot }}" target="_blank">Check reviews</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+
+<!--
+
+<div class="about-author d-flex p-4 bg-light rounded">
+<div class="bio mr-5">
+    <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+</div>
+
+<div class="desc">
+    <h3>George Washington</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+</div>
+</div>
+
+<div class="pt-5 mt-5">
+
+<h3 class="mb-5" style="font-size: 28px; font-weight: bold;">6 Comments</h3>
+<ul class="comment-list">
+<li class="comment">
+    <div class="vcard bio">
+        <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+    </div>
+
+    <div class="comment-body">
+        <h3>John Doe</h3>
+        <div class="meta">October 30, 2020 at 3:03pm</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+        <p><a href="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="reply">Reply</a></p>
+    </div>
+</li>
+
+
+<li class="comment">
+    <div class="vcard bio">
+        <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+    </div>
+
+<div class="comment-body">
+<h3>John Doe</h3>
+    <div class="meta">October 30, 2020 at 3:03pm</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+    <p><a href="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="reply">Reply</a></p>
+</div>
+
+
+<ul class="children">
+    <li class="comment">
+
+        <div class="vcard bio">
+            <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+        </div>
+
+        <div class="comment-body">
+            <h3>John Doe</h3>
+            <div class="meta">October 30, 2020 at 3:03pm</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+            <p><a href="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="reply">Reply</a></p>
+        </div>
+
+        <ul class="children">
+            <li class="comment">
+                <div class="vcard bio">
+                    <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                </div>
+
+                <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">October 30, 2020 at 3:03pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="reply">Reply</a></p>
+                </div>
+            </li>
+        </ul>
+
+
+    </li>
+
+</ul>
+    </li>
+
+
+    <li class="comment">
+        <div class="vcard bio">
+            <img src="./Propfirm_detail_template_files/person_1.jpg" alt="Image placeholder" data-pagespeed-url-hash="3849436488" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+        </div>
+
+        <div class="comment-body">
+            <h3>John Doe</h3>
+            <div class="meta">October 30, 2020 at 3:03pm</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+            <p><a href="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="reply">Reply</a></p>
+        </div>
+    </li>
+</ul>
+
+
+
+<div class="comment-form-wrap pt-5">
+    <h3 class="mb-5" style="font-size: 28px; font-weight: bold;">Leave a comment</h3>
+    <form action="https://preview.colorlib.com/theme/pexman/blog-single.html#" class="p-5 comment-form">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" class="form-control" id="email">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" class="form-control" id="website">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+        </div>
+    </div>
+</div>
+
+</div>
+</section>
+
+-->
+
+{% endblock %}

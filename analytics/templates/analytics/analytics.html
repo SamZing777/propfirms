@@ -1,0 +1,85 @@
+{% extends 'userbase.html' %}
+
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h2> Welcome {{ user.username }} </h2>
+
+
+<div class="container">
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'tradingview' %}">My Trading view</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Analytics</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+    </div>
+
+
+{% for data in analytics %}
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col sol-sm">
+                <iframe src="{{ data.link }}" width="95%" height="500" frameborder="no">
+            <a href="//www.fxblue.com">FX Blue - free tools and services for FX and CFD traders></iframe>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% for data in instruments %}
+        <div class="container mt-4">
+            <div class="row text-center">
+                <div class="col sol-sm">
+
+                <h4>Because you selected {{ data.instrument }} as your favourite Instrument</h4>
+
+
+                        <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/gopro/?share_your_love=operaocean1000/symbols/{{ data.instrument }}/?exchange=FX" rel="noopener" target="_blank">
+                <span class="blue-text">{{ data.instrument }} Rates</span></a>
+                by TradingView
+            </div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+            {
+            "symbol": "{{ data.instrument.symbol }}",
+            "width": 350,
+            "height": 220,
+            "locale": "en",
+            "dateRange": "12M",
+            "colorTheme": "light",
+            "trendLineColor": "rgba(41, 98, 255, 1)",
+            "underLineColor": "rgba(41, 98, 255, 0.3)",
+            "underLineBottomColor": "rgba(41, 98, 255, 0)",
+            "isTransparent": false,
+            "autosize": false,
+            "largeChartUrl": ""
+          }
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+
+        </div>
+    </div>
+</div>
+
+ {% endfor %}
+
+
+{% endblock %}

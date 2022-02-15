@@ -1,0 +1,122 @@
+{% extends 'staff_base.html' %}
+
+{% block title %}
+    Competing Users
+{% endblock %}
+
+{% block content %}
+
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+                <div class="d-block mb-4 mb-md-0">
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                          <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'competition' %}">Competition</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Competition Applications</li>
+                        </ol>
+                    </nav>
+                    <h3 class="h4 text-center">List of Competitors.</h3>
+                </div>
+
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-primary">Something</button>
+                        <a href={% url 'export-competition' %} class="btn btn-sm btn-outline-primary">Export</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-settings mb-4">
+                <div class="row align-items-center justify-content-between">
+
+                    <div class="col-4 col-md-2 col-xl-1 pl-md-0 text-right">
+                        <div class="btn-group">
+                            <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon icon-sm icon-gray">
+                                    <span class="fa fa-cog"></span>
+                                </span>
+                                <span class="sr-only">Competition Settings</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Competition</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Platform</th>
+                            <th>Server</th>
+                            <th>Investor Password</th>
+                            <th>Email</th>
+                            <th>Time applied</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                         {% for event in application %}
+
+                        <tr>
+
+                            <td>
+                                <span class="font-weight-normal">{{ event.name }}</span>
+                            </td>
+                            <td><span class="font-weight-normal">{{ event.user }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.user.first_name }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.user.last_name }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.platform }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.server }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.investor_password }}</span></td>
+                            <td><span class="font-weight-normal">{{ event.user.email }}</span></td>
+                            <td><span class="font-weight-bold text-success">{{ event.timeStamp }}</span></td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+    <div class="container">
+      <div class="row text-center">
+          <div class="col col-sm">
+                <nav aria-label="Page navigation example">
+        {% if is_paginated %}
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                      {% if page_obj.number == i %}
+                        <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+        {% endif %}
+               </nav>
+
+          </div>
+      </div>
+     </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'staff_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Add Payout
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Something</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Payout</li>
+                </ol>
+            </nav>
+            <h3 class="h4">Add Payout</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col col-sm form-group">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.firm | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.package | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.profit_split | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.interval | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <button type="submit" onclick="addPayout()" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function addPayout(){
+                alert("Payout have been added successfully.");
+        }
+    </script>
+
+{% endblock %}

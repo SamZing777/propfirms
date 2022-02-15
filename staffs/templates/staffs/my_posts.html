@@ -1,0 +1,74 @@
+{% extends 'staff_base.html' %}
+
+{% block title %}
+    My Posts | Prop Firms
+{% endblock %}
+
+{% block content %}
+
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+                <div class="d-block mb-4 mb-md-0">
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                          <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                          <li class="breadcrumb-item"><a href="#">Competition</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">My Posts</li>
+                        </ol>
+                    </nav>
+                    <h3 class="h4 text-center">Blog Posts by {{ user.user }}</h3>
+                </div>
+
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-primary">Something</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Export</button>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container mt-4 pt-4">
+            <div class="row text-center">
+                {% for post in posts %}
+                <div class="col col-sm">
+                    <p>{{ post.title }}</p>
+                    <small>{{ post.category }}</small> <br />
+                    <i><small>{{ post.timeStamp }}</small></i>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    <div class="container">
+      <div class="row text-center">
+          <div class="col col-sm">
+                <nav aria-label="Page navigation example">
+        {% if is_paginated %}
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                      {% if page_obj.number == i %}
+                        <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+        {% endif %}
+               </nav>
+
+          </div>
+      </div>
+     </div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ detail.title }}
+{% endblock %}
+
+{% block comment %}
+<div id="fb-root">
+</div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="XCsBsWXG">
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2"
+style="background-image:url({{ detail.image.url }}">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                <span class="mr-2"><a href="{% url 'blog' %}"> Blog <i class="fa fa-chevron-right"></i></a></span>
+                <span>{{ detail.category }} <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread"> {{ detail.title }} Information </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>{{ detail.title }}</h3>
+            <h6> {{ detail.content | safe }}</h6>
+            <small>{{ detail.timeStamp }}</small>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4>Comments</h4>
+            <div class="fb-comments" data-href="https://www.propfirms.co.uk{{ request.path }}" data-width="" data-numposts="100">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Compare | Prop Firms
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2" style="background-image:url(https://cdn.pixabay.com/photo/2020/10/23/14/54/woman-5678995_960_720.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="{% url 'firms' %}">Firms <i class="fa fa-chevron-right"></i></a></span>
+                </p>
+                <h1 class="mb-0 bread">  Comparison</h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+
+        <h4>Compare Propfirms and choose the one that suits you.</h4>
+
+        <div class="col col-sm">
+
+            {% include 'firms/firm_comparison_search_form.html'  %}
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="card-group">
+
+            {% for firm in comparison %}
+
+                <div class="col col-sm col-md-6 col-lg-3">
+
+                    <a href="{% url 'comparison_detail' firm.slug %}">
+                      <div class="card">
+                        <img src="" class="card-img-top" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ firm.firmA }} vs {{ firm.firmB }}</h5>
+                        </div>
+                        <div class="card-footer">
+                          <small class="text-muted">Last Updated: {{ firm.date_updated | date }} </small>
+                        </div>
+                      </div>
+                    </a>
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</section>
+
+
+{% endblock %}

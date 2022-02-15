@@ -1,0 +1,79 @@
+{% extends 'staff_base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Add Blog Post
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Competition</a> Something else</li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Blog Post</li>
+                </ol>
+            </nav>
+            <h3 class="h4">Add Blog Post</h3>
+        </div>
+    </div>
+
+    <div class="container mt-4 pt-4">
+        <div class="row text-center">
+            <div class="col col-sm form-group">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.category | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.title | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.is_featured | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.image | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-sm-6 col-md-6 col-lg-3">
+                        {{ form.content | as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <button type="submit" onclick="addPost()" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+        function addPost(){
+                alert("Post have been added.");
+        }
+    </script>
+
+
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+</body>
+</html>
+
+
+{% endblock %}

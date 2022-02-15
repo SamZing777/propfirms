@@ -1,0 +1,51 @@
+{% extends 'userbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ user.username }} Instrument | Propfirms
+{% endblock %}
+
+
+{% block content %}
+
+    <h2> Welcome {{ user.username }} </h2>
+
+
+<div class="container">
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Instrument</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input type="submit" value="Submit" class="btn btn-success" onclick="created()"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function created(){
+                alert("Your Favourite Instrument have been recorded");
+        }
+    </script>
+
+
+{% endblock %}

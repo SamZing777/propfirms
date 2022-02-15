@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+        Your search for {{ object_list.name }}
+    {% endblock %}
+
+
+    {% block content %}
+     <br> <br>
+
+    <div class="container mt-4">
+        <div class="row text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <h1>Search results...</h1>
+            </div>
+
+    <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+
+    {% if searches|length < 1 %}
+
+        <div>
+            <p>Your search - <b>{{ request.GET.query }}</b> ... - did not match any documents.</p>
+            <p>Suggestions:</p>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+            <li>Try fewer keywords.</li>
+        </div>
+
+    {% else %}
+
+        {% for firm in searches %}
+            <div class="img-fluid img-responsive mt-4 pt-4 mb-4">
+                <div class="inner-div">
+                    <a href="{% url 'comparison_detail' firm.slug %}">
+                        <h5> {{ firm.firmA }} vs {{ firm.firmB }} </h5>
+
+                    </a>
+                </div>
+            </div>   <br/>
+        {% endfor %}
+
+    {% endif %}
+    </div>
+
+    <!-- End Row and Container -->
+
+    </div>
+</div>
+
+</br> </br>
+
+{% endblock %}

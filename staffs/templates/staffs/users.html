@@ -1,0 +1,135 @@
+{% extends 'staff_base.html' %}
+
+{% block title %}
+	Active Users
+{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+      <div class="py-4">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="#"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Users</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Active Users</li>
+              </ol>
+          </nav>
+      </div>
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-primary">Share</button>
+                <a href="{% url 'export-users' %}" class="btn btn-sm btn-outline-primary">Export</a>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="card border-light shadow-sm">
+          <div class="card-body">
+
+              <div class="table-responsive">
+                  <table class="table table-centered table-nowrap mb-0 rounded">
+
+                      <thead class="thead-light">
+                          <tr>
+                              <th class="border-0">Country</th>
+                              <th class="border-0">Username</th>
+                              <th class="border-0">First Name</th>
+                              <th class="border-0">Last Name</th>
+                              <th class="border-0">Email</th>
+                              <th class="border-0">Active</th>
+                              <th class="border-0">Staff Status</th>
+                              <th class="border-0">Date Joined</th>
+                              <th class="border-0">Last Login</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <!-- Item -->
+                           {% for user in users %}
+
+                          <tr>
+                              <td class="border-0">
+                                  <a href="#" class="d-flex align-items-center">
+                                      <img class="mr-2 image image-small rounded-circle" alt="#">
+                                      <div><span class="h6">Country</span></div>
+                                  </a>
+                              </td>
+                              <td class="border-0 font-weight-bold">
+                                  {{ user }}
+                              </td>
+
+                              <td class="border-0 font-weight-bold">
+                                  {{ user.first_name }}
+                              </td>
+
+                              <td class="border-0 font-weight-bold">
+                                  {{ user.last_name }}
+                              </td>
+
+                              <td class="border-0 font-weight-bold">
+                                  {{ user.email }}
+                              </td>
+
+                              <td class="border-0">
+                                  {{ user.is_active }}
+                              </td>
+
+                              <td class="border-0 font-weight-bold">
+                                  {{ user.is_staff }}
+                              </td>
+
+                              <td class="border-0 text-success">
+                                  {{ user.date_joined }}
+                              </td>
+
+                              <td class="border-0 font-weight-bold">
+                                  {{ user.last_login }}
+                              </td>
+                          </tr>
+                          <!-- End of Item -->
+                          {% endfor %}
+
+
+                      </tbody>
+                  </table>
+
+              </div>
+          </div>
+      </div>
+
+
+      <div class="container">
+          <div class="row text-center">
+              <div class="col col-sm">
+                    <nav aria-label="Page navigation example">
+            {% if is_paginated %}
+                      <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                          <li class="page-item disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                          {% if page_obj.number == i %}
+                            <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                          {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                          <li class="page-item disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                      </ul>
+            {% endif %}
+                   </nav>
+
+              </div>
+          </div>
+      </div>
+
+{% endblock %}

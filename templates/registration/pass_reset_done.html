@@ -1,0 +1,32 @@
+{% extends 'userbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Password reset Done
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm col-md col-lg">
+            <h2>Check your Inbox</h2>
+
+        </div>
+    </div>
+</div>  <br/>
+
+<div class="container mt-4 pt-4">
+    <div class="row">
+        <div class="col col-sm col-md col-lg">
+
+        <p>We've emailed you instructions for setting your password. You should receive the email shortly!</p>
+        <p class="alert alert-info"> You may also check your spam folder if email did not arrive in 30 seconds.</p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

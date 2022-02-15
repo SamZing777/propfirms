@@ -1,0 +1,60 @@
+{% extends 'staff_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Add Account Size
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Something</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Account Size</li>
+                </ol>
+            </nav>
+            <h3 class="h4">Add Account Size</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col col-sm form-group">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                        {{ form.firm | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                        {{ form.plan | as_crispy_field }}
+                      </div>
+
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                        {{ form.size | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                        {{ form.price | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <button type="submit" onclick="addAccountSize()" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addAccountSize(){
+                alert("Account Size have been added successfully.");
+        }
+    </script>
+
+{% endblock %}

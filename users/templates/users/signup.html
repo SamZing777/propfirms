@@ -1,0 +1,41 @@
+{% extends 'userbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Sign up | Prop Firms
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col col-sm col-md col-lg">
+            <h1>Create New Account</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 pt-4">
+    <div class="row">
+        <div class="col col-sm col-md col-lg">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <input class="btn btn-success" type="submit" class="" value="Sign Up" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 pt-4">
+    <div class="row">
+        <div class="col col-sm col-md col-lg">
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

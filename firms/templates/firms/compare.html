@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+
+    {{ firm.firmA }} vs {{ firm.firmB }} | Prop Firms
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2" style="background-image:url(https://cdn.pixabay.com/photo/2017/09/19/20/05/management-2766430_960_720.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs">
+                    <span class="mr-2">
+                        <a href="{% url 'firms' %}"> Firms <i class="fa fa-chevron-right"></i></a>
+                    </span>
+                    <span class="mr-2">
+                        <a href="{% url 'comparison' %}"> Comparison <i class="fa fa-chevron-right"></i></a>
+                    </span>
+                </p>
+                <h1 class="mb-0 bread">  {{ firm.firmA }} vs {{ firm.firmB }} </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4>Compare {{ firm.firmA }} and {{ firm.firmB }}, you may choose both if they suit you.</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+
+        <div class="table-responsive">
+          <table class="table table-striped fa-check text-successtable-border border-light">
+
+            <thead class="border-light">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"><strong>{{ firm.firmA }}</strong></th>
+                <th scope="col"><strong>{{ firm.firmB }}</strong></th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                <th scope="row"> Account Metrix </th>
+                <td>
+                    {{ firm.firmA.account_metrix }}
+                </td>
+                <td>
+                    {{ firm.firmB.account_metrix }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Adaptability</th>
+                <td>
+                    {{ firm.firmA.adaptability }}
+                </td>
+                <td>
+                    {{ firm.firmB.adaptability }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Automation</th>
+                <td>
+                    {{ firm.firmA.automation }}
+                </td>
+                <td>
+                    {{ firm.firmB.automation }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Broker or Server </th>
+                <td>
+                    {{ firm.firmA.broker_or_server }}
+                </td>
+                <td>
+                    {{ firm.firmB.broker_or_server }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Communication</th>
+                <td>
+                    {{ firm.firmA.communication }}
+                </td>
+                <td>
+                    {{ firm.firmB.commmunication }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Conflict Resolution Ability </th>
+                <td>
+                    {{ firm.firmA.conflict_resolution_ability }}
+                </td>
+                <td>
+                    {{ firm.firmB.conflict_resolution_ability }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Consistency </th>
+                <td>
+                    {{ firm.firmA.consistency }}
+                </td>
+                <td>
+                    {{ firm.firmB.consistency }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Copy Trading </th>
+                <td>
+                    {{ firm.firmA.trade_copier }}
+                </td>
+                <td>
+                    {{ firm.firmB.trade_copier }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Customer Satisfaction</th>
+                <td>
+                    {{ firm.firmA.customer_satisfaction }}
+                </td>
+                <td>
+                    {{ firm.firmB.customer_satisfaction }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Ethics</th>
+                <td>
+                    {{ firm.firmA.ethics }}
+                </td>
+                <td>
+                    {{ firm.firmB.ethics }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Expert Advisors (EAs) </th>
+                <td>
+                    {{ firm.firmA.EAs }}
+                </td>
+                <td>
+                    {{ firm.firmB.Eas }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Face Criticism</th>
+                <td>
+                    {{ firm.firmA.face_criticism }}
+                </td>
+                <td>
+                    {{ firm.firmB.face_criticism }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Funding Plans</th>
+                <td>
+                    {% for plan in plans %}
+
+                        <small>
+                            <b> Package:</b> {{ plan.name }} | <b>Profit Target: </b>{{ plan.profit_target }} |
+                            <b>Profit split: </b>{{ plan.profit_split }} | <b>Daily Draw down: </b>{{ plan.daily_dd }} |
+                            <b>Max Draw down: </b>{{ plan.max_dd }} | <b>Instruments: </b>{{ plan.instruments }} |
+                            <b>Consistency: </b>{{ plan.consistency }} | <b>Fee refund: </b>{{ plan.fee_refund }}
+                        </small>
+
+                    {% endfor %}
+                </td>
+
+                <td>
+                    {% for plan in firm_b_plans %}
+
+                        <small>
+                             <b> Package: {{ plan.name }} </b> | <b>Profit Target: </b>{{ plan.profit_target }} |
+                            <b>Profit split: </b>{{ plan.profit_split }} | <b>Daily Draw down: </b>{{ plan.daily_dd }} |
+                            <b>Max Draw down: </b>{{ plan.max_dd }} | <b>Instruments: </b>{{ plan.instruments }} |
+                            <b>Consistency: </b>{{ plan.consistency }} | <b>Fee refund: </b>{{ plan.fee_refund }}
+                        </small>
+
+                    {% endfor %}
+
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Good Will</th>
+                <td>
+                    {{ firm.firmA.good_will }}
+                </td>
+                <td>
+                    {{ firm.firmB.good_will }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Innovation</th>
+                <td>
+                    {{ firm.firmA.innovation }}
+                </td>
+                <td>
+                    {{ firm.firmB.innovation }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Leadership</th>
+                <td>
+                    {{ firm.firmA.leadership }}
+                </td>
+                <td>
+                    {{ firm.firmB.leadership }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Payment Method</th>
+                <td>
+                    {{ firm.firmA.payment_method }}
+                </td>
+                <td>
+                    {{ firm.firmB.payment_method }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Payout</th>
+                <td>
+                    <small><b> Package | Profit Split | Interval </b> </small> <br/>
+                    {% for pay in payout %}
+
+                        <small> {{ pay.package }} | {{ pay.profit_split }} | {{ pay.interval }} </small><br/>
+
+                    {% endfor %}
+                </td>
+
+                <td>
+                    <small><b> Package | Profit Split | Interval </b> </small> <br/>
+                    {% for pay in firm_b_payout %}
+
+                        <small> {{ pay.package }} | {{ pay.profit_split }} | {{ pay.interval }} </small><br/>
+
+                    {% endfor %}
+
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Platforms</th>
+                <td>
+                    {{ firm.firmA.platforms }}
+                </td>
+                <td>
+                    {{ firm.firmB.platforms }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Pricing</th>
+                <td>
+                    <small><b> Account Size | Price </b> </small> <br/>
+                    {% for size in account_size %}
+
+                        <small> {{ size.size }} | {{ size.price }} </small><br/>
+
+                    {% endfor %}
+                </td>
+
+                <td>
+                    <small><b> Account Size | Price </b> </small> <br/>
+                    {% for size in firm_b_account_size %}
+
+                        <small> {{ size.size }} | {{ size.price }} </small><br/>
+
+                    {% endfor %}
+
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Rules</th>
+                <td>
+                    {% if firm.firm_a_rules == 3 %} <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i>
+                    {% elif firm.firm_a_rules == 4 %} <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i>
+                    {% elif firm.firm_a_rules == 5 %} <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i>
+                    {% endif %}
+
+                </td>
+                <td>
+                    {% if firm.firm_b_rules == 3 %} <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i>
+                    {% elif firm.firm_b_rules == 4 %} <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i>
+                    {% elif firm.firm_b_rules == 5 %} <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i> <i class="fa fa-star text-success"></i>
+                    {% endif %}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Scaling Plan</th>
+                <td>
+                    <small><b> Package | Multiplier </b> </small> <br/>
+                    {% for scale in scaling %}
+
+                        <small> {{ scale.package }} | {{ scale.scale_by}} </small><br/>
+
+                    {% endfor %}
+                </td>
+
+                <td>
+                    <small><b> Package | Multiplier </b> </small> <br/>
+                    {% for scale in firm_b_scaling %}
+
+                        <small> {{ scale.package }} | {{ scale.scale_by}} </small><br/>
+
+                    {% endfor %}
+
+                </td>
+              </tr>
+
+
+
+              <tr>
+                <th scope="row">Support</th>
+                <td>
+                    {{ firm.firmA.support }}
+                </td>
+                <td>
+                    {{ firm.firmB.support }}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"> Trial </th>
+                <td>
+                    {{ firm.firmA.trial }}
+                </td>
+                <td>
+                    {{ firm.firmB.trial }}
+                </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock %}

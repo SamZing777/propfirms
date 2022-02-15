@@ -1,0 +1,186 @@
+{% extends 'staff_base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Add PropFirm
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Competition</a> Something else</li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Prop Firm</li>
+                </ol>
+            </nav>
+            <h3 class="h4">Add PropFirm</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col col-sm form-group">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.name | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.date_founded | as_crispy_field }}
+                      </div>
+
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.CEO | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.website | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.discount_code | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.cash_back | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.automation | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.customer_satisfaction | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.communication | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.leadership | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.adaptability | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.ethics | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.good_will | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.conflict_resolution_ability | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.innovation | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.face_criticism | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.support | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.platforms | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.payment_method | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.payout_method | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.consistency | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.trade_copier | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.EAs | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-6 col-md-3 col-lg-3">
+                        {{ form.account_metrix | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm-4 col-md-4 col-lg-4">
+                        {{ form.trial | as_crispy_field }}
+                      </div>
+                      <div class="col col-sm-4 col-md-4 col-lg-4">
+                        {{ form.broker_or_server | as_crispy_field }}
+                      </div>
+
+                      <div class="col col-sm-4 col-md-4 col-lg-4">
+                        {{ form.overall_rating | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm">
+                        {{ form.motto | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col col-sm">
+                        {{ form.note | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <button type="submit" onclick="addPropFirm()" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addPropFirm(){
+                alert("Propfirm have been added successfully.");
+        }
+    </script>
+
+
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+</body>
+</html>
+
+
+
+{% endblock %}

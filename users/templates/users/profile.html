@@ -1,0 +1,339 @@
+{% extends 'userbase.html' %}
+
+{% load cloudinary %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ user.username }} Profile | Propfirms
+{% endblock %}
+
+
+{% block content %}
+
+ <h2> Welcome {{ user.username }} </h2>
+
+
+<div class="container">
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    {% for trader in profile %}
+                        {% if trader.picture %}
+                            <img src="{{ trader.picture.url }}" alt="{{ user.username }}" class="rounded-circle" width="150">
+                        {% else %}
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="{{ user.username }}" class="rounded-circle" width="150">
+                        {% endif %}
+                    {% endfor %}
+                    <div class="mt-3">
+                      <h4>{{ user.username }}</h4>
+                      <p class="text-secondary mb-1"></p>
+                      <p class="text-muted font-size-sm"></p>
+                      <button onclick=location.href="{% url 'rebate' %}" class="btn btn-primary">Rebate</button>
+                      <a href="{% url 'competition' %}" class="btn btn-outline-primary">Compete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {% for trader in profile %}
+
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-globe"></i> &nbsp; Platform &nbsp;
+                    </h6>
+                    <span class="text-secondary"> propfirms.co.uk</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-telegram"> </i> &nbsp; Telegram &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.telegram_id }}</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-line-chart"> </i> &nbsp; TradingView &nbsp;
+                    </h6>
+                    <span class="text-secondary"><a target="_blank" href="{{ trader.profile_link }}">{{ trader.user.username }}</a></span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-calendar-check-o"> </i> &nbsp; Experience &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.years_of_experience }}</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-phone"> </i> &nbsp; Mobile &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.phone_number }}</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-anchor"> </i> &nbsp; Strategy &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.strategy }}</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-universal-access"> </i> &nbsp; Trading Style &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.style }}</span>
+                  </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0">
+                        <i class="fa fa-info"> </i> &nbsp; bio &nbsp;
+                    </h6>
+                    <span class="text-secondary"> {{ trader.bio }}</span>
+                 </li>
+
+                </ul>
+              </div>
+
+              {% endfor %}
+
+            </div>
+
+
+
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ user.first_name }} {{ user.last_name }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ user.email }}
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"> Username </h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{ user.username }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Country</h6>
+                    </div>
+
+                    {% for trader in profile %}
+                    <div class="col-sm-9 text-secondary">
+                        {{ trader.country }}
+                    </div>
+                    {% endfor %}
+
+                    {% if user.is_staff %}
+                    <div class="col-sm-9 text-secondary">
+                        <a class="btn btn-success" href="{% url 'staff' %}" target="_blank">Staff Panel</a>
+                    </div>
+                    {% endif %}
+
+                  </div>
+
+
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                    {% if request.user.traderprofile %}
+
+                        <button>Edit Profile</button>
+
+                    {% else %}
+
+                        <!-- Button trigger modal -->
+                    <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#createProfile">
+                      Create Profile
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="createProfile" tabindex="-1" role="dialog" aria-labelledby="profileLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle">Create Trader Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
+                          <form method="POST" enctype="multipart/form-data">
+                              <div class="modal-body">
+
+                                    {% csrf_token %}
+                                    {{ form | crispy }}
+
+                              </div>
+
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-success" value="Submit" onclick="profile_created()" />
+                              </div>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal -->
+
+                    {% endif %}
+
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    {% if request.user.fxblueanalytic %}
+
+                    <a href="{% url 'analytics' %}" type="button" class="btn btn-success">My Analytics</a>
+
+                    {% else %}
+
+                    <a href="{% url 'create-analytic' %}" type="button" class="btn btn-warning">
+                      Create Analytic
+                    </a>
+
+                    {% endif %}
+
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    <a href="{% url 'create-instrument' %}" type="button" class="btn btn-warning">
+                      Favourite Instrument
+                    </a>
+
+
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+
+
+                    <a href="{% url 'logout' %}" type="button" class="btn btn-danger">
+                      Logout
+                    </a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            {% for data in performance %}
+
+              <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Personal</i>Status</h6>
+
+                       <small>Starting Balance: &nbsp; &nbsp; </small> <b>{{ data.starting_equity }}</b>
+                       <div style="height: 5px">
+                     </div>
+
+                        <small>Total Trades: &nbsp; &nbsp; </small> <b>{{ data.total_trades }}</b>
+                    <div style="height: 5px">
+                     </div>
+
+                      <small>Total Pips: &nbsp; &nbsp; </small> <b>{{ data.total_pip }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.total_pip < 0 %} bg-danger {% elif data.total_pip > 0 and data.total_pip < 20 %} bg-warning {% elif data.total_pip > 20 and data.total_pip < 80 %} bg-primary {% elif data.total_pip > 80 %} bg-success {% endif %}" role="progressbar" style="width: {{ data.pip_volume }}%" aria-valuenow="{{ data.pip_volume }}" aria-valuemin="{{ data.pip_volume }}" aria-valuemax="{{ data.pip_volume }}"></div>
+                      </div>
+
+                      <small>Profit and Loss: &nbsp; &nbsp; </small> <b>{{ data.profit_and_loss }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.profit_and_loss < 0 %} bg-danger {% elif data.profit_and_loss > 0 and data.profit_and_loss < 500 %} bg-warning {% elif data.profit_and_loss > 500 and data.profit_and_loss < 4000 %} bg-primary {% elif data.profit_and_loss > 4000 %} bg-success {% endif %}" role="progressbar" style="width: {{ data.p_and_l_volume }}%" aria-valuenow="{{ data.p_and_l_volume }}" aria-valuemin="{{ data.p_and_l_volume }}" aria-valuemax="{{ data.p_and_l_volume }}"></div>
+                      </div>
+
+
+                    <small>Closing Balance: &nbsp; &nbsp; </small> <b>{{ data.closing_balance }}</b>
+                    <div style="height: 5px">
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"> </i>Competition Status</h6>
+
+                      <small>Position: &nbsp; &nbsp; </small> <b>{{ data.position }}</b>
+                      <div style="height: 5px">
+                      </div>
+
+                      <small>Risk Reward &nbsp; &nbsp; </small> <b>{{ data.risk_reward }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.risk_reward < 0 %} bg-danger {% elif data.risk_reward > 0 and data.rr_volume < 0.5 %} bg-warning {% elif data.risk_reward > 0.5 and risk_reward < 1.50 %} bg-primary {% elif data.risk_reward > 1.5 %} bg-success {% endif %}" role="progressbar" style="width: {{ data.rr_volume }}%" aria-valuenow="{{ data.rr_volume }}" aria-valuemin="{{ data.rr_volume }}" aria-valuemax="{{ data.rr_volume }}"></div>
+                      </div>
+
+                      <small>Profit Factor: &nbsp; &nbsp; </small> <b>{{ data.profit_factor }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.profit_factor < 0 %} bg-danger {% elif data.profit_factor > 0 and data.profit_factor < 0.5 %} bg-warning {% elif data.profit_factor > 0.5 and data.profit_factor < 1.5 %} bg-primary {% elif profit_factor_volume > 1.5 %} bg-success {% endif %}" role="progressbar" style="width: {{ data.profit_factor_volume }}%" aria-valuenow="{{ data.profit_factor_volume }}" aria-valuemin="{{ data.profit_factor_volume }}" aria-valuemax="{{ data.profit_factor_volume }}"></div>
+                      </div>
+
+                      <small>Behaviour: &nbsp; &nbsp; </small> <b>{{ data.behaviour }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.behaviour == "Poor" %} bg-danger {% elif data.behaviour == "Average" %} bg-warning {% elif data.behaviour == "Good" %} bg-primary {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ data.behaviour_volume }}%" aria-valuenow="{{ data.behaviour_volume }}" aria-valuemin="{{ data.behaviour_volume }}" aria-valuemax="{{ data.behaviour_volume }}"></div>
+                      </div>
+
+                      <small>Ability</small>  <b>{{ data.ability }}</b>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar {% if data.ability == "Poor" %} bg-danger {% elif data.ability == "Average" %} bg-warning {% elif data.ability == "Good" %} bg-primary {% else %} bg-success {% endif %}" role="progressbar" style="width:{{ data.ability_volume }}%" aria-valuenow="{{ data.ability_volume }}" aria-valuemin="{{ data.ability_volume }}" aria-valuemax="{{ data.ability_volume }}"></div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {% endfor %}
+
+
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    <script>
+        function createProfile(){
+                alert("Your Profile has been created.");
+        }
+    </script>
+
+{% endblock %}

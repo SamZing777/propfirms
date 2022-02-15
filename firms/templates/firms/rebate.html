@@ -1,0 +1,51 @@
+{% extends 'userbase.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load cloudinary %}
+
+{% block title %}
+    {{ user.username }} Rebate | Propfirms
+{% endblock %}
+
+
+{% block content %}
+
+    <h2> Welcome {{ user.username }} </h2>
+
+<div class="container">
+    <div class="main-body">
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Rebate</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <input type="submit" value="Submit" class="btn btn-success" onclick="created()"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function created(){
+                alert("Your Cash rebate request have been received, we will reach you shortly!");
+        }
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+{% endblock %}

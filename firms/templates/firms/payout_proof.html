@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load cloudinary %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Payout Proofs | Prop Firms
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2" style="background-image:url(https://cdn.pixabay.com/photo/2017/12/25/12/35/salary-3038325_960_720.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="{% url 'firms' %}">Firms <i class="fa fa-chevron-right"></i></a></span>
+                </p>
+                <h1 class="mb-0 bread">  Payout Proof </h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+
+        <h4> See Payout Proofs by other Traders with verified firms they trade with. </h4>
+
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="card-group">
+
+            {% for pay in payout %}
+
+                <div class="col col-sm col-md-6 col-lg-3">
+
+                      <div class="card">
+                         <h5>{{ pay.user }}</h5>
+                          <p> <span class="badge bg-info"> {{ pay.payout}} </span></p>
+                        <img src="{{ pay.attachment.url }}" class="card-img-top" alt="{{ pay.firm }}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ pay.firm }}</h5>
+                          <p>Plan: {{ pay.package }}</p>
+                          <p>Capital: {{ pay.account_size }}</p>
+                        </div>
+
+                        <div class="card-footer">
+                          <small class="text-muted">{{ pay.timeStamp }} </small>
+                        </div>
+
+                        <div class="">
+                            <p>{{ pay.additional_remark }}</p>
+                        </div>
+                      </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <h4>Upload your Payout Proofs for other Traders to see.</h4>
+        <div class="col col-sm">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col col-sm">
+                    {{ form.firm | as_crispy_field }}
+                </div>
+
+                <div class="col col-sm">
+                    {{ form.package | as_crispy_field }}
+                </div>
+
+                <div class="col col-sm">
+                    {{ form.account_size | as_crispy_field }}
+                </div>
+
+                <div class="col col-sm">
+                    {{ form.attachment | as_crispy_field }}
+                </div>
+
+                <div class="col col-sm">
+                    {{ form.payout | as_crispy_field }}
+                </div>
+
+                <div class="col col-sm">
+                    {{ form.additional_remark | as_crispy_field }}
+                </div>
+
+                <input type="submit" class="btn btn-success" value="Submit" />
+            </form>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h5 class="badge bg-info">Log In to Add Payout Proofs</h5>
+            <a class="text-success" href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Compare | Prop Firms
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2" style="background-image:url(https://cdn.pixabay.com/photo/2020/10/23/14/54/woman-5678995_960_720.jpg)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="{% url 'comparison' %}"> Compare <i class="fa fa-chevron-right"></i></a></span>
+                </p>
+                <h2 class="mb-0 bread">{% for firm in searches %} {{ firm.name }} <i class="fa fa-chevron-right"></i> {% endfor %}  Comparison</h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4">
+    <div class="row text-center">
+
+        <h4>Compare Propfirms and choose the one that suits you.</h4>
+
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col col-sm">
+        <div class="table-responsive">
+
+          <table class="table table-striped fa-check text-successtable-border border-light">
+
+            <thead class="border-light">
+              <tr>
+                <th scope="col"></th>
+            {% for firm in searches %}
+                <th scope="col"><strong>{{ firm.name }}</strong></th>
+            {% endfor %}
+              </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                <th scope="row"> Account Metrix </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.account_metrix }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Adaptability</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.adaptability }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Automation</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.automation }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Broker or Server </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.broker_or_server }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Communication</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.communication }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Conflict Resolution Ability </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.conflict_resolution_ability }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Consistency </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.consistency }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Copy Trading </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.trade_copier }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Customer Satisfaction</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.customer_satisfaction }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Ethics</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.ethics }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Expert Advisors (EAs) </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.EAs }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Face Criticism</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.face_criticism }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Funding Plans</th>
+                <td>
+                    {% for plan in plans %}
+
+                        <small>
+                            <b> Package:</b> {{ plan.name }} | <b>Profit Target: </b>{{ plan.profit_target }} |
+                            <b>Profit split: </b>{{ plan.profit_split }} | <b>Daily Draw down: </b>{{ plan.daily_dd }} |
+                            <b>Max Draw down: </b>{{ plan.max_dd }} | <b>Instruments: </b>{{ plan.instruments }} |
+                            <b>Consistency: </b>{{ plan.consistency }} | <b>Fee refund: </b>{{ plan.fee_refund }}
+                        </small>
+
+                    {% endfor %}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Good Will</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.good_will }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Innovation</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.innovation }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Leadership</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.leadership }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Payment Method</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.payment_method }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Payout</th>
+                <td>
+                    <small><b> Package | Profit Split | Interval </b> </small> <br/>
+                    {% for pay in payout %}
+
+                        <small> {{ pay.package }} | {{ pay.profit_split }} | {{ pay.interval }} </small><br/>
+
+                    {% endfor %}
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Platforms</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.platforms }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row">Pricing</th>
+                <td>
+                    <small><b> Account Size | Price </b> </small> <br/>
+                    {% for size in account_size %}
+
+                        <small> {{ size.size }} | {{ size.price }} </small><br/>
+
+                    {% endfor %}
+                </td>
+              </tr>
+
+
+
+              <tr>
+                <th scope="row">Scaling Plan</th>
+                <td>
+                    <small><b> Package | Multiplier </b> </small> <br/>
+                    {% for scale in scaling %}
+
+                        <small> {{ scale.package }} | {{ scale.scale_by}} </small><br/>
+
+                    {% endfor %}
+                </td>
+              </tr>
+
+
+
+              <tr>
+                <th scope="row">Support</th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.support }}
+                </td>
+                {% endfor %}
+              </tr>
+
+              <tr>
+                <th scope="row"> Trial </th>
+                {% for firm in searches %}
+                <td>
+                    {{ firm.trial }}
+                </td>
+                {% endfor %}
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+</div>
+
+</section>
+
+
+{% endblock %}

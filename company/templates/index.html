@@ -1,0 +1,873 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block content %}
+
+<section class="slider-hero js-fullheight" style="height: 654px;">
+    <div class="overlay"></div>
+    <div class="featured-carousel owl-carousel owl-loaded owl-drag">
+
+
+
+<div class="owl-stage-outer">
+    <div class="owl-stage" style="transform: translate3d(-5396px, 0px, 0px); transition: all 0s ease 0s; width: 9443px;">
+
+	<div class="owl-item cloned" style="width: 1349px;">
+		<div class="item">
+    <div class="work">
+    <div class="img d-flex align-items-center justify-content-center js-fullheight" style="background-image: url(static/img/financial.jpg); height: 654px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="text mt-md-5">
+            <h2>Network for PropFirms</h2>
+            <p class="mb-5">
+                Network for Proprietary Firms
+                who offers their legitimate service to Professional Traders
+                who want to take their trading journey to the next level.
+            </p>
+            <p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="owl-item cloned" style="width: 1349px;">
+    <div class="item">
+    <div class="work">
+        <div class="img d-flex align-items-center justify-content-center js-fullheight" style="background-image: url(static/img/trader.jpg); height: 654px;">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="text mt-md-5">
+            <h2>Network for Professional Traders</h2>
+            <p class="mb-5">
+                Network for Professional Traders
+                who wants to unleash their skill in a risk free environment
+                taking full advantage of Prop Firms.
+            </p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="owl-item" style="width: 1349px;">
+	<div class="item">
+<div class="work">
+    <div class="img d-flex align-items-center js-fullheight"
+    style="background-image: url(static/img/group.jpg); height: 654px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 order-md-last">
+        <div class="text mt-md-5">
+            <h2>Community for Traders</h2>
+            <p class="mb-5">
+                A community where traders meets with each other
+                communicate and share trading ideas
+                help each other get to the top.
+            </p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="owl-item" style="width: 1349px;"><div class="item">
+<div class="work">
+    <div class="img d-flex align-items-center justify-content-center js-fullheight" style="background-image: url(static/img/cashback.jpg); height: 654px;">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+        <div class="text mt-md-5">
+            <h2>Cashback or discounts in subscription</h2>
+            <p class="mb-5">
+                Take advantage of extra benefit
+                as rebate discount or cash back
+                when you purchase a trading plan using our link.
+            </p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div></div>
+
+<div class="owl-item active" style="width: 1349px;">
+	<div class="item">
+<div class="work">
+<div class="img d-flex align-items-center justify-content-center js-fullheight"
+style="background-image: url(static/img/financial.jpg); height: 654px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="text mt-md-5">
+            <h2>Network for PropFirms</h2>
+            <p class="mb-5">
+                Network for Proprietary Firms
+                who offers their legitimate service to Professional Traders
+                who want to take their trading journey to the next level.
+            </p>
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="owl-item cloned" style="width: 1349px;">
+    <div class="item">
+<div class="work">
+<div class="img d-flex align-items-center js-fullheight"
+style="background-image: url(static/img/trader.jpg); height: 654px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 order-md-last">
+        <div class="text mt-md-5">
+            <h2>Network for Professional Traders</h2>
+            <p class="mb-5">
+                Network for Professional Traders
+                who wants to unleash their skill in a risk free environment
+                taking full advantage of Prop Firms.
+            </p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<div class="owl-item cloned" style="width: 1349px;"><div class="item">
+<div class="work">
+    <div class="img d-flex align-items-center justify-content-center js-fullheight" style="background-image: url(static/img/group.jpg); height: 654px;">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+        <div class="text mt-md-5">
+            <h2>Community for Traders</h2>
+            <p class="mb-5">
+                A community where traders meets with each other
+                communicate and share trading ideas
+                help each other get to the top.
+            </p>
+            {% if user.is_authenticated %}
+            <p><a href="{% url 'profile' %}" class="btn btn-primary px-5 py-3"> Profile<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% else %}
+            <p><a href="{% url 'signup' %}" class="btn btn-primary px-5 py-3">Get Started <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+            {% endif %}
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="owl-nav disabled">
+	<button type="button" role="presentation" class="owl-prev">
+	    <span class="icon-keyboard_arrow_left"></span>
+	</button>
+	<button type="button" role="presentation" class="owl-next">
+		<span class="icon-keyboard_arrow_right"></span></button></div>
+		<div class="owl-dots disabled"></div>
+	</div>
+<div class="my-5 text-center">
+<ol class="thumbnail">
+<li class="img"><a href="#">01.</a></li>
+<li class=""><a href="#">02.</a></li>
+<li class="active"><a href="#">03.</a></li>
+</ol>
+</div>
+</section>
+
+
+
+<section class="ftco-section ftco-about ftco-no-pt ftco-no-pb">
+<div class="container-fluid px-0">
+<div class="d-md-flex full-wrap">
+<div class="half order-md-last d-flex align-items-stretch">
+<div class="img w-100" style="background-image:url(static/img/pc.jpg)"></div>
+</div>
+<div class="half d-flex">
+<div class="text-about pr-md-5">
+<div class="col-md-6 d-flex">
+<div class="heading-section">
+<span class="subheading">Welcome Trader!</span>
+<h2 class="mb-4">We Are creative Network for Prop Traders</h2>
+<p>
+    One of the best things that has happened to the Forex Industry in the last few years is the coming of prop firms..
+ </p>
+
+<p>
+    So many Traders around the world has used this opportunity to give their lives a meaning and a treat they truly deserve.
+ </p>
+<p class="mt-md-5"><a href="{% url 'firms' %}" class="btn btn-primary px-5 py-3">Having issues choosing the best Firm?
+	<span class="ion ion-ios-arrow-round-forward"></span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="ftco-counter img" id="section-counter"
+style="background-image:url(static/img/chill.jpg)">
+<div class="overlay"></div>
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-lg-3 d-flex counter-wrap ftco-animate">
+<div class="block-18 mb-xl-0 mb-2">
+<div class="text text-center w-100">
+<p>
+<strong class="number" data-number="20">0</strong>
+</p>
+<span>Legal Firms</span>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3 d-flex counter-wrap ftco-animate">
+<div class="block-18 mb-xl-0 mb-2">
+<div class="text text-center w-100">
+<p>
+<strong class="number" data-number="4">0</strong>
+<span>K+</span>
+</p>
+<span>Subscribed Traders</span>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3 d-flex counter-wrap ftco-animate">
+<div class="block-18 mb-xl-0 mb-2">
+<div class="text text-center w-100">
+<p>
+<strong class="number" data-number="5000">0</strong>
+</p>
+<span>Funded Traders</span>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3 d-flex counter-wrap ftco-animate">
+<div class="block-18 mb-xl-0 mb-2">
+<div class="text text-center w-100">
+<p>
+<strong class="number" data-number="6">0</strong>
+<span>K+</span>
+</p>
+<span>Happy Traders</span>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="ftco-section ftco-about ftco-no-pt ftco-no-pb">
+    <div class="container-fluid px-0">
+    <div class="d-md-flex full-wrap">
+        <div class="half">
+        <div class="img" style="background-image:url(static/img/building.webp)"></div>
+        </div>
+    <div class="half d-flex">
+    <div class="text-about d-flex justify-content-end pl-md-5">
+    <div class="col-md-6 d-flex pl-md-5">
+    <div class="heading-section">
+    <span class="subheading">What we offer</span>
+
+    <h2 class="mb-4">Reviews of Prop Firms</h2>
+    <p>We personally trade with firms and have an experience using their services and offers.</p>
+    <div class="media block-6 services-2 w-100 d-flex align-items-center">
+    <div class="icon d-flex justify-content-center align-items-center"><span>1</span></div>
+
+    <div class="text">
+    <h3>Research and Ratings</h3>
+    <p class="mb-0">We collect data from Traders that trades with Firms and analyse the data to provide a fair rating of firms.</p>
+    </div>
+    </div>
+    <div class="media block-6 services-2 w-100 d-flex align-items-center">
+    <div class="icon d-flex justify-content-center align-items-center"><span>2</span></div>
+
+    <div class="text">
+    <h3>Rebates</h3>
+    <p class="mb-0">
+        We partner only with verified and licensed firms and brokers, so we offer discounts,
+        if you use our or affiliate link (buying from our site or telegram channel, we offer you some cash back, with proof.
+    </p>
+    </div>
+    </div>
+    <div class="media block-6 services-2 w-100 d-flex align-items-center">
+    <div class="icon d-flex justify-content-center align-items-center"><span>3</span></div>
+
+    <div class="text">
+    <h3>Education</h3>
+    <p class="mb-0">Professional Education that will enlighten you master the Market and enjoy profit taking.</p>
+    </div>
+    </div>
+    <div class="media block-6 services-2 w-100 d-flex align-items-center">
+    <div class="icon d-flex justify-content-center align-items-center"><span>4</span></div>
+
+    <div class="text">
+    <h3>Free funds opportunity</h3>
+    <p class="mb-0">We provide free competition where Traders can put their skills to work and get funded with top notch Prop firms.</p>
+    </div>
+    </div>
+    <p class="mt-md-5"><a href="{% url 'firms' %}" class="btn btn-primary px-5 py-3">Choose a Firm to Trade with <span class="ion ion-ios-arrow-round-forward"></span></a></p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+    <div class="media block-6 services services-4 d-block text-center px-2 pb-4">
+    <div class="icon d-flex justify-content-center align-items-center"><span class="fa fa-tasks"></span></div>
+    <div class="media-body py-md-4">
+    <h3>Establish Goals</h3>
+    <p>Establish goal, enter and exit like a Pro following your trading plan.</p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+    <div class="media block-6 services services-4 d-block text-center px-2 pb-4">
+    <div class="icon d-flex justify-content-center align-items-center">
+        <span class="fa fa-group"></span></div>
+    <div class="media-body py-md-4">
+    <h3>Work with team</h3>
+    <p>Work with Professional traders in the community, sharing analysis, signals and trade ideas</p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+    <div class="media block-6 services services-4 d-block text-center px-2 pb-4">
+    <div class="icon d-flex justify-content-center align-items-center"><span class="fa fa-bullseye"></span></div>
+    <div class="media-body py-md-4">
+    <h3>Get Results</h3>
+    <p>Get results from your established goals and trading plans.</p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-stretch ftco-animate">
+    <div class="media block-6 services services-4 d-block text-center px-2 pb-4">
+    <div class="icon d-flex justify-content-center align-items-center"><span class="fa fa-money"></span></div>
+    <div class="media-body py-md-4">
+    <h3>Be financially free</h3>
+    <p>Be your own Boss trading Prop firms capital and earn 6 digits ($).</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="ftco-section">
+    <div class="container">
+    <div class="row mb-5 justify-content-between">
+    <div class="col-md-5 heading-section">
+    <span class="subheading">Most Rated Firms</span>
+    <h2 class="mb-3">Top 4 Prop Firms</h2>
+    </div>
+
+    <div class="col-md-6 d-flex align-items-end">
+        <ul class="work-category">
+            <li class="active"><a>All</a></li>
+            <li><a>Evaluation</a></li>
+            <li><a>Instant Funding</a></li>
+            <li><a>Monthly Subscription</a></li>
+        </ul>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="container-fluid">
+    <div class="row">
+
+    <div class="col-md-3 ftco-animate">
+    <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(static/img/ftmo.jpg)">
+    <a href="#" class="icon image-popup d-flex align-items-center justify-content-center"><span class="fa fa-search"></span></a>
+    <div class="text text-center">
+    <h3><a href="https://ftmo.com/?affiliates=1873">FTMO</a></h3>
+    <p><span>Evaluation</span>,<span></span></p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 ftco-animate">
+    <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(/static/img/preview.jpg)">
+    <a href="#" class="icon image-popup d-flex align-items-center justify-content-center"><span class="fa fa-search"></span></a>
+    <div class="text text-center">
+    <h3><a href="https://myforexfunds.com/?wpam_id=37321">MyForexFunds</a></h3>
+    <p><span>Evaluation, Instant Funding</span>,<span></span></p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 ftco-animate">
+    <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(/static/img/funding-hero.png)">
+    <a href="#" class="icon image-popup d-flex align-items-center justify-content-center">
+        <span class="fa fa-search"></span></a>
+    <div class="text text-center">
+    <h3><a href="http://dash.traderscentral.fund/sign-up?ref=oceanman">TCF</a></h3>
+    <p><span>Evaluation, Instant Funding and Monthly</span>,<span></span></p>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 ftco-animate">
+    <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(/static/img/the5ers.jpg)">
+    <a href="#" class="icon image-popup d-flex align-items-center justify-content-center">
+        <span class="fa fa-search"></span></a>
+    <div class="text text-center">
+    <h3><a href="https://the5ers.com/?ref=8797">The5ers</a></h3>
+    <p><span>Instant Funding, Evaluation</span>,<span></span></p>
+    </div>
+    </div>
+    </div>
+
+            <!--
+            <div class="col-md-3 ftco-animate">
+            <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(images/xwork-5.jpg.pagespeed.ic.tS4bFn-pmq.webp)">
+            <a href="#" class="icon image-popup d-flex align-items-center justify-content-center">
+                <span class="fa fa-search"></span></a>
+            <div class="text text-center">
+            <h3><a href="https://preview.colorlib.com/theme/pexman/work.html">Hark Website</a></h3>
+            <p><span>Web Design</span>,<span>Branding</span></p>
+            </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 ftco-animate">
+            <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(images/xwork-6.jpg.pagespeed.ic.RupLEjxNLP.webp)">
+            <a href="https://preview.colorlib.com/theme/pexman/images/work-6.jpg" class="icon image-popup d-flex align-items-center justify-content-center">
+                <span class="fa fa-search"></span></a>
+            <div class="text text-center">
+            <h3><a href="https://preview.colorlib.com/theme/pexman/work.html">Hark Website</a></h3>
+            <p><span>Web Design</span>,<span>Branding</span></p>
+            </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 ftco-animate">
+            <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(images/xwork-7.jpg.pagespeed.ic.VL2SUY_RpS.webp)">
+            <a href="https://preview.colorlib.com/theme/pexman/images/work-7.jpg" class="icon image-popup d-flex align-items-center justify-content-center"><span class="fa fa-search"></span></a>
+            <div class="text text-center">
+            <h3><a href="https://preview.colorlib.com/theme/pexman/work.html">Hark Website</a></h3>
+            <p><span>Web Design</span>,<span>Branding</span></p>
+            </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 ftco-animate">
+            <div class="project-wrap img d-flex align-items-center justify-content-center" style="background-image:url(images/xwork-8.jpg.pagespeed.ic.BEEvFj7ItC.webp)">
+            <a href="https://preview.colorlib.com/theme/pexman/images/work-8.jpg" class="icon image-popup d-flex align-items-center justify-content-center"><span class="fa fa-search"></span></a>
+            <div class="text text-center">
+            <h3><a href="https://preview.colorlib.com/theme/pexman/work.html">Hark Website</a></h3>
+            <p><span>Web Design</span>,<span>Branding</span></p>
+            </div>
+            </div>
+            </div>
+            -->
+
+    </div>
+    </div>
+</section>
+
+
+<!--
+<section class="ftco-section testimony-section ftco-no-pt">
+    <div class="overlay"></div>
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-md-7 text-center heading-section ftco-animate">
+    <span class="subheading">Testimonial</span>
+    <h2 class="mb-4">What Are Clients Says</h2>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row ftco-animate justify-content-center">
+    <div class="col-md-6">
+    <div class="carousel-testimony owl-carousel owl-loaded owl-drag">
+
+
+    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1650px, 0px, 0px); transition: all 0s ease 0s; width: 6050px;"><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_3.jpg.pagespeed.ic.Cln-jaM1jK.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_4.jpg.pagespeed.ic.ucbtJ1Htlo.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_2.jpg.pagespeed.ic.Xrdu_nPZRp.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item active" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_1.jpg.pagespeed.ic.a2MnMHMs44.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_2.jpg.pagespeed.ic.Xrdu_nPZRp.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_3.jpg.pagespeed.ic.Cln-jaM1jK.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Cheif Executive Officer @pexman</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_4.jpg.pagespeed.ic.ucbtJ1Htlo.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">MentFX</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_2.jpg.pagespeed.ic.Xrdu_nPZRp.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Michael J</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_1.jpg.pagespeed.ic.a2MnMHMs44.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">JustinFX</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_2.jpg.pagespeed.ic.Xrdu_nPZRp.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Jaguar Paul</span>
+    </div>
+    </div>
+    </div></div><div class="owl-item cloned" style="width: 520px; margin-right: 30px;"><div class="item">
+    <div class="testimony-wrap">
+    <div class="text">
+    <div class="user-img" style="background-image:url(images/xperson_3.jpg.pagespeed.ic.Cln-jaM1jK.webp)"></div>
+    <p class="star">
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    </p>
+    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    <p class="name">Roger Scott</p>
+    <span class="position">Abdullah </span>
+    </div>
+    </div>
+    </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span class="ion-ios-arrow-back"></span></button><button type="button" role="presentation" class="owl-next"><span class="ion-ios-arrow-forward"></span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+    </div>
+    </div>
+    </div>
+</section>
+-->
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+    <div class="row justify-content-center pb-5">
+    <div class="col-md-7 text-center heading-section ftco-animate">
+    <span class="subheading">Read Latest News</span>
+
+    <a class="fx-widget" data-widget="newsfeed" data-lang="en" data-post-date-color="#999" data-post-description-color="#333333" data-post-title-color="#333333" data-widget-bg-color="#FFF" data-show-image data-width="1024" data-height="855" data-show-date data-title-font-size="18" data-intro-font-size="16" data-category="news" data-section="all" data-base-url="https://www.fxempire.com" data-url="//www.fxempire.com" href="https://www.fxempire.com" rel="nofollow" style="font-family:Helvetica;font-size:16px;line-height:1.5;text-decoration:none;">
+            <span style="color:#999999;display:inline-block;margin-top:10px;font-size:12px;">Powered By </span>
+            <img style="width:87px; height:14px;" src="https://www.fxempire.com/logo-full.svg" alt="FX Empire logo" />
+    </a>
+    <script async charset="utf-8" src="https://widgets.fxempire.com/widget.js" >
+    </script>
+
+
+   <!--
+ <h2 class="mb-4">Our Latest Blog</h2>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 col-lg-3 ftco-animate">
+    <div class="blog-entry">
+    <a href="#" class="block-20" style="background-image:url(images/ximage_1.jpg.pagespeed.ic.FL0iBhryhq.webp)">
+    </a>
+    <div class="text d-block">
+    <div class="meta">
+    <p>
+    <a href="#"><span class="fa fa-calendar mr-2"></span>Oct. 27, 2020</a>
+    </p>
+    </div>
+    <h3 class="heading"><a href="#">Far far away, behind the word mountains </a></h3>
+    <p>Far far away, behind the word mountains, far from the countries.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3 ftco-animate">
+    <div class="blog-entry">
+    <a href="#" class="block-20" style="background-image:url(images/ximage_2.jpg.pagespeed.ic.-x0Ll8ptzk.webp)">
+    </a>
+    <div class="text d-block">
+    <div class="meta">
+    <p>
+    <a href="#"><span class="fa fa-calendar mr-2"></span>Oct. 27, 2020</a>
+    </p>
+    </div>
+    <h3 class="heading"><a href="#">Far far away, behind the word mountains </a></h3>
+    <p>Far far away, behind the word mountains, far from the countries.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3 ftco-animate">
+    <div class="blog-entry">
+    <a href="#" class="block-20" style="background-image:url(images/ximage_3.jpg.pagespeed.ic.DwkWtPATES.webp)">
+    </a>
+    <div class="text d-block">
+    <div class="meta">
+    <p>
+    <a href="#"><span class="fa fa-calendar mr-2"></span>Oct. 27, 2020</a>
+    </p>
+    </div>
+    <h3 class="heading"><a href="#">Far far away, behind the word mountains </a></h3>
+    <p>Far far away, behind the word mountains, far from the countries.</p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-6 col-lg-3 ftco-animate">
+    <div class="blog-entry">
+    <a href="#" class="block-20" style="background-image:url(images/ximage_4.jpg.pagespeed.ic.r0BKEhAIc3.webp)">
+    </a>
+    <div class="text d-block">
+    <div class="meta">
+    <p>
+    <a href="#"><span class="fa fa-calendar mr-2"></span>Oct. 27, 2020</a>
+    </p>
+    </div>
+    <h3 class="heading"><a href="#">Far far away, behind the word mountains </a></h3>
+    <p>Far far away, behind the word mountains, far from the countries.</p>
+    </div>
+
+    -->
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+
+            <div class="tradingview-widget-container">
+         <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright">
+              <a href="https://www.tradingview.com/gopro/?share_your_love=operaocean1000" rel="noopener" target="_blank">
+                  <span class="blue-text">Ticker Tape</span></a> by TradingView
+            </div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+          {
+          "symbols": [
+            {
+              "proName": "FOREXCOM:SPXUSD",
+              "title": "S&P 500"
+            },
+            {
+              "proName": "FOREXCOM:NSXUSD",
+              "title": "Nasdaq 100"
+            },
+            {
+              "proName": "FX_IDC:EURUSD",
+              "title": "EUR/USD"
+            },
+            {
+              "proName": "BITSTAMP:BTCUSD",
+              "title": "BTC/USD"
+            },
+            {
+              "proName": "BITSTAMP:ETHUSD",
+              "title": "ETH/USD"
+            },
+            {
+              "proName": "FOREXCOM:USDCAD",
+              "proName": "USDCAD"
+            }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+          </script>
+        </div>
+</nav>
+
+{% endblock %}

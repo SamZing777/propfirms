@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    {{ detail.name }} | Prop Firms
+{% endblock %}
+
+
+{% block comment %}
+    <div id="fb-root">
+    </div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="UbV4R1XZ">
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section">
+
+<section class="hero-wrap hero-wrap-2"
+style="background-image:url(https://images.pexels.com/photos/5370340/pexels-photo-5370340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pt-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2">
+                    <a>Home <i class="fa fa-chevron-right"></i></a></span>
+                <span class="mr-2"><a href="{% url 'firms' %}">Firms <i class="fa fa-chevron-right"></i></a></span>
+                <span>{{ detail.name }} <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread"> {{ detail.name }} Information </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Foundation</h3>
+            <h6> CEO:  {{ detail.CEO }}</h6>
+            <h6> Motto:  {{ detail.motto }}</h6>
+            <h6> Date Founded: {{ detail.date_founded }}</h6>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Process</h3>
+            <h6> Platforms:  {{ detail.platforms }}</h6>
+            <h6> Broker / Server:  {{ detail.broker_or_server }}</h6>
+            <h6> Payment Method: {{ detail.payment_method }}</h6>
+            <h6> Payout Method: {{ detail.payout_method }}</h6>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+    <div class="tagcloud">
+        <h3>System</h3>
+
+            <h6>Provide Account Metrix: </h6>
+        {% if detail.account_metrix == 'Yes' %}
+            <h6 class="tag-cloud-link text-success">{{ detail.account_metrix }}</h6>
+        {% else %}
+            <a class="tag-cloud-link">{{ detail.account_metrix }}</a> <br >
+        {% endif %}
+        <br/>
+
+               <h6>Requires Consistency: </h6>
+        {% if detail.consistency == 'Yes' %}
+            <h6 class="tag-cloud-link text-success">{{ detail.consistency }}</h6>
+        {% else %}
+            <a class="tag-cloud-link">{{ detail.consistency }}</a> <br/>
+        {% endif %}
+        <br/>
+
+               <h6>Allow EAs</h6>
+        {% if detail.EAs == 'Yes' %}
+               <h6 class="tag-cloud-link text-success">{{ detail.EAs}}</h6>
+        {% else %}
+               <a class="tag-cloud-link">{{ detail.EAs }}</a> <br />
+        {% endif %}
+        <br/>
+
+               <h6>Allows Trade Copier: </h6>
+        {% if detail.trade_copier == 'Yes' %}
+               <h6 class="tag-cloud-link text-success">{{ detail.trade_copier }}</h6>
+        {% else %}
+               <a class="tag-cloud-link">{{ detail.trade_copier }}</a> <br />
+        {% endif %}
+        <br/>
+
+            <h6>Gives Trial Account: </h6>
+        {% if detail.trial == 'Yes' %}
+            <h6 class="tag-cloud-link text-success">{{ detail.trial }}</h6>
+        {% else %}
+            <a class="tag-cloud-link">{{ detail.trial }}</a>
+        {% endif %}
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h3>Funding Packages</h3>
+
+            {% for plan in plans %}
+                <h5>Plan: {{ plan.name }}</h5>
+                <p>Profit Target: {{ plan.profit_target }}</p>
+                <p>Profit Split: {{ plan.profit_split }}</p>
+                <p>Leverage: {{ plan.leverage }}</p>
+                <p>Instrument: {{ plan.instruments }}</p>
+                <p>Consistency: {{ plan.consistency }}</p>
+                <p>Fee refund: {{ plan.fee_refund }}</p>
+                <p>Daily Drawdown: {{ plan.daily_dd }}</p>
+                <p>Max Drawdown: {{ plan.max_dd }}</p>
+                <p>Maximum funded account: {{ plan.maximum_funded_account }}</p>
+                <p>Maximum account size: {{ plan.maximum_account_size }}</p>
+                <p>Minimum duration: {{ plan.minimum_duration }}</p>
+                <p>Maximum duration: {{ plan.maximum_duration }}</p> <br/>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+<section class="pricing py-5">
+  <div class="container mt-4">
+    <div class="row text-center">
+        <h4> Account Size</h4>
+      <!-- Free Tier -->
+
+          {% for size in account_size %}
+    <div class=" col col-sm-6  col-md-6 col-lg-4">
+        <div class="card mb-2 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">{{ size.plan }}</h5>
+            <h6 class="card-price text-center">{{ size.size }}</h6>
+            <hr>
+            <ul class="fa-ul">
+              <li data-toggle="tooltip" data-placement="top" title="Price"><span class="fa-li"><i class="fa fa-money"> </i></span>{{ size.price }}</li>
+              <li data-toggle="tooltip" data-placement="top" title="Leverage"><span class="fa-li"><i class="fa fa-info"></i></span>{{ size.plan.leverage }}</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<div class="container mt-4 mb-3">
+    <div class="row text-center">
+        <h4>Payout</h4>
+
+        {% for pay in payout %}
+        <div class="col-md-4">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="ms-2 c-details">
+                            <h4 class="mb-0">{{ pay.package }}</h4>
+                        </div>
+                    </div>
+                    <div class="badge"> <span data-toggle="tooltip" data-placement="top" title="Profit Split">{{ pay.profit_split }}</span> </div>
+                </div>
+
+                <div class="progress mt-4">
+                    {% if pay.profit_split == "50:50" %}
+                    <div class="progress-bar bg-primary" data-toggle="tooltip" data-placement="top" title="you get 50%" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "60:40" %}
+                    <div class="progress-bar bg-primary" data-toggle="tooltip" data-placement="top" title="you get 60%" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "65:35" %}
+                    <div class="progress-bar bg-primary" data-toggle="tooltip" data-placement="top" title="you get 65%" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "70:30" %}
+                     <div class="progress-bar bg-info" data-toggle="tooltip" data-placement="top" title="you get 70%" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "75:25" %}
+                    <div class="progress-bar bg-primary" data-toggle="tooltip" data-placement="top" title="you get 75%" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "80:20" %}
+                     <div class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="you get 80%" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "85:15" %}
+                     <div class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="you get 85%" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                     {% elif pay.profit_split == "90:10" %}
+                     <div class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="you get 90%" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% elif pay.profit_split == "100:0" %}
+                    <div class="progress-bar bg-success" data-toggle="tooltip" data-placement="top" title="you get 100%" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    {% endif %}
+                </div>
+                <div class="mt-3"><p>Interval: <span class="text1" data-toggle="tooltip" data-placement="top" title="Payment Window">{{ pay.interval }}</span> </p></div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+        <style>
+
+
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px
+}
+
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
+        </style>
+
+    </div>
+</div>
+
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4>Scaling Plan</h4>
+
+            {% for scale in scaling %}
+                <h4>Plan: {{ scale.package }}</h5>
+                <p>Scale by: {{ scale.scale_by }}</p>
+                <p>Max Equity: {{ scale.max_equity }}</p>
+                <p>Scaling Condition: {{ scale.condition }}</p> <br/>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4>Reviews</h4>
+                <p>Adaptability: {{ detail.adaptability }}</p>
+                <p>Automation: {{ detail.automation }}</p>
+                <p>Communication: {{ detail.communication }}</p>
+                <p>Conflict Resolution: {{ detail.conflict_resolution }}</p>
+                <p>Customer Satisfaction: {{ detail.customer_satisfaction }}</p>
+                <p>Ethics: {{ detail.ethics }}</p>
+                <p>Face Criticisms: {{ detail.face_criticism }}</p>
+                <p>Good Will: {{ detail.goodwill }}</p>
+                <p>Innovation: {{ detail.innovation }}</p>
+                <p>Leadership: {{ detail.leadership }}</p>
+                <p>Support: {{ detail.support }}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+        <div class="row text-center">
+
+    <div class="col col-sm">
+        <h4 class="mb-3">Brief</h4>
+        <p>
+            {{ detail.note | safe }}
+        </p>
+    </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <h4 class="mb-3">Overall Rating</h4>
+            <p>
+                <p>Overall Rating: {{ detail.overall_rating }}</p>
+            </p>
+
+            <span> <a href="{{ detail.website }}" class="btn btn-success" target="_blank" > <h5> Website </h5></a> </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-4 pt-4">
+    <div class="row text-center">
+        <div class="col col-sm">
+            <div class="fb-comments" data-href="https://www.propfirms.co.uk{{ request.path }}" data-width="" data-numposts="100">
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+{% endblock %}

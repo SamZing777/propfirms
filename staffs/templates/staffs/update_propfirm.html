@@ -1,0 +1,37 @@
+{% extends 'auth_base.html' %}
+
+{% block title %}
+    Update Payout
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Update </li>
+                </ol>
+            </nav>
+            <h3 class="h4">Update</h3>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-submit" value="Update" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

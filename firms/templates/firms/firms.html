@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Firms
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+    <div class="row justify-content-center pb-5">
+
+        <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Verified Prop Firms</h2>
+        </div>
+
+        </div>
+
+        <div class="container mt-4">
+            <div class="row text-center">
+                <div class="col col-sm col-md">
+
+                        <div class="btn-group">
+
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            1 stage Evaluation
+                          </button> &nbsp; &nbsp;
+
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/digital-pit/">Digital Pit</a>
+                          </div>
+                        </div>
+
+
+                        <div class="btn-group">
+
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            2 Stages Evaluation
+                          </button> &nbsp; &nbsp;
+
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/e8-funding/">E8 Funding</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/ftmo-friends-that-make-out/">FTMO</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/my-forex-funds/">My Forex Funds</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/nations-trading/">Nations Trading</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/the-funded-trader-tft/">The Funded Trader</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/traders-central-fund-tcf/">Traders Central Fund</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/true-forex-funds-tff/">True Forex Funds</a>
+
+                          </div>
+                        </div>
+
+
+                        <div class="btn-group">
+
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Monthly Subscription
+                          </button> &nbsp; &nbsp;
+
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/blufx/">Blu FX</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/topstepfx/">Top Step FX</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/traders-central-fund-tcf/">Traders Central Fund</a>
+                          </div>
+
+                        </div>
+
+
+                        <div class="btn-group">
+
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Direct Funding
+                          </button>
+
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/my-forex-funds-/">My Forex Funds</a>
+                            <a class="dropdown-item" href="https://www.propfirms.co.uk/propfirms/traders-central-fund-tcf/">Traders Central Fund</a>
+                          </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4 pt-4">
+
+        <div class="row text-center">
+
+            {% for firm in firms %}
+
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="blog-entry">
+                    <aclass="block-20" style="background-image:url(/static/img/funding-hero.png)">
+                    </a>
+                    <div class="text d-block">
+                        <div class="meta">
+                            <p> Founded:
+                                <a><span class="fa fa-calendar mr-2"></span>{{ firm.date_founded }}</a>
+                            </p>
+                        </div>
+                        <h3 class="heading"><a> {{ firm.name }} </a></h3>
+                    </div>
+
+                    <a href="{% url 'firm_detail' firm.slug %}" class="btn btn-info">Details</a>
+                    <a target="_blank" href="{{ firm.website }}" class="btn btn-success">Visit website</a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

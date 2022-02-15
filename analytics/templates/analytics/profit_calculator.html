@@ -1,0 +1,55 @@
+{% extends 'userbase.html' %}
+
+{% block title %}
+    Forex Calculator | Propfirms
+{% endblock %}
+
+
+
+{% block content %}
+
+<h2> Welcome {{ user.username }} </h2>
+
+<div class="container">
+
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profit Calculator</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+    </div>
+</div>
+
+    <div class="container mt-4 pt-4">
+        <div class="row">
+            <div class="col col-sm">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4 pt-4">
+        <div class="row text-center">
+
+            <h3>Profit Calculator</h3>
+            <div class="col col-sm">
+                <div id="profit-calculator-751614">
+                <script type="text/javascript" src="https://www.cashbackforex.com/Content/remote/remote-widgets.js"></script>
+                <script type="text/javascript">
+                RemoteCalc({"Url":"https://www.cashbackforex.com", "TopPaneStyle":"YmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCNmZmYgMjAlLCAjZjVmNWY1IDQ1JSk7IGNvbG9yOiBibGFjazsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYTsgYm9yZGVyLWJvdHRvbTogbm9uZTsg","BottomPaneStyle":"YmFja2dyb3VuZDogI2YzZjNmMzsgYm9yZGVyOiBzb2xpZCAxcHggI2FhYTsgY29sb3I6IGJsYWNrOw==","ButtonStyle":"YmFja2dyb3VuZDogIzM0MzU0MDsgY29sb3I6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAyMHB4Ow==","TitleStyle":"dGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiA0MHB4OyBmb250LXdlaWdodDogNTAwOw==","ContainerWidth":"665","DefaultInstrument":"EUR-USD","IsDisplayTitle":false,"IsShowChartLinks":false,"IsShowEmbedButton":false,"CompactType":"large","Calculator":"profit-calculator","ContainerId":"profit-calculator-751614"});
+                </script></div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

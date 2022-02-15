@@ -1,0 +1,102 @@
+{% extends 'staff_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Add Funding Plan
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-block mb-4 mb-md-0">
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+                <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}"><span class="fa fa-home"></span></a></li>
+                  <li class="breadcrumb-item"><a href="#">Competition</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Add Funding Plan</li>
+                </ol>
+            </nav>
+            <h3 class="h4">Add Funding Plan</h3>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col col-sm form-group">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="row">
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.firm | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.name | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.profit_target | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.profit_split | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.daily_dd | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.max_dd | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.leverage | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.instruments | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.consistency | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.fee_refund | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.maximum_funded_account | as_crispy_field }}
+                      </div>
+                      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                        {{ form.maximum_account_size | as_crispy_field }}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6">
+                        {{ form.minimum_duration | as_crispy_field }}
+                      </div>
+                      <div class="col-6">
+                        {{ form.maximum_duration | as_crispy_field }}
+                      </div>
+                    </div>
+                    <button type="submit" onclick="addFunding()" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function addFunding(){
+                alert("Firm Comparison have been added successfully.");
+        }
+    </script>
+
+
+
+
+
+{% endblock %}

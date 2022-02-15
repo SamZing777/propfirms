@@ -1,0 +1,79 @@
+{% extends 'userbase.html' %}
+
+{% block title %}
+    Analyse and Trade | Propfirms
+{% endblock %}
+
+
+
+{% block content %}
+
+<h2> Welcome {{ user.username }} </h2>
+
+<div class="container">
+
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'analytics' %}">Analytics</a></li>
+              <li class="breadcrumb-item active" aria-current="page">My trading view</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+    </div>
+</div>
+
+    <div class="container mt-4 pt-4">
+        <div class="row">
+            <div class="col col-sm">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4 pt-4">
+        <div class="row">
+            <div class="col col-sm">
+
+                <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div id="tradingview_4e8b5"></div>
+                      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/EURUSD/?exchange=FX" rel="noopener" target="_blank">
+                          <span class="blue-text">EURUSD Chart</span></a> by TradingView</div>
+                      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                      <script type="text/javascript">
+                      new TradingView.widget(
+                      {
+                      "width": 980,
+                      "height": 610,
+                      "symbol": "FX:EURUSD",
+                      "timezone": "Etc/UTC",
+                      "theme": "light",
+                      "style": "1",
+                      "locale": "en",
+                      "toolbar_bg": "#f1f3f6",
+                      "enable_publishing": false,
+                      "range": "YTD",
+                      "hide_side_toolbar": false,
+                      "allow_symbol_change": true,
+                      "studies": [
+                        "RSI@tv-basicstudies"
+                      ],
+                      "container_id": "tradingview_4e8b5"
+                    }
+                      );
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
